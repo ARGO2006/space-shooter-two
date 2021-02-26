@@ -244,7 +244,16 @@ controller.moveSprite(mySprite)
 mySprite.setStayInScreen(true)
 info.setLife(5)
 music.playMelody("C C5 C A C F C E ", 120)
-game.onUpdateInterval(2000, function () {
+let enemySpawntime = 2000
+let EnemySpeed = 20
+game.onUpdateInterval(5000, function () {
+    EnemySpeed += 5
+    EnemySpeed = Math.min(EnemySpeed, 50)
+    enemySpawntime += -250
+    enemySpawntime = Math.max(EnemySpeed, 500)
+})
+forever(function () {
+    pause(enemySpawntime)
     Enemy_Ship = sprites.create(img`
         . . . . . . . b b b b b b b . . 
         . . . . . b b b a a a a a a a . 
@@ -264,7 +273,7 @@ game.onUpdateInterval(2000, function () {
         . . . . . . . c c c c c . . . . 
         `, SpriteKind.Enemy)
     Enemy_Ship.x = scene.screenWidth()
-    Enemy_Ship.vx = -20
+    Enemy_Ship.vx = 0 - EnemySpeed
     Enemy_Ship.y = randint(0, scene.screenWidth() - -10)
     statusbar = statusbars.create(12, 2, StatusBarKind.EnemyHealth)
     statusbar.attachToSprite(Enemy_Ship)
