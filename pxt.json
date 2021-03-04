@@ -1,5 +1,5 @@
 {
-    "name": "Space Shooter",
+    "name": "Pirates: Call to Adventure",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -13,7 +13,8 @@
         "tilemap.g.jres",
         "tilemap.g.ts",
         "images.g.jres",
-        "images.g.ts"
+        "images.g.ts",
+        "custom.ts"
     ],
     "testFiles": [
         "test.ts"
